@@ -1,0 +1,54 @@
+﻿@model  Album.ViewModel.AlbumViewModel
+@{
+    ViewBag.Title = "Albums";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Albums</h2>
+<h2></h2>
+<table id="AlbumTable" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Album Name</th>
+            <th>User Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var albumset in Model.AlbumSet)
+        {
+            <tr>
+                <td style="width:150px">
+                    <img style="width:130px" src='@string.Format("{0}", albumset.FirstThumbNail)'>
+                    <p><a href='@string.Format("/photos/index/{0}", albumset.Id)'>@albumset.Title</a></p>
+                </td>
+                <td><a href='@string.Format("/user/Details/{0}", @albumset.Users.Id)'>@albumset.Users.Name</a></td>
+                <td>@albumset.Users.Phone</td>
+                <td>@albumset.Users.Email</td>
+                <td>
+                    <p>@albumset.Users.Address.Street</p>
+                    <p>@albumset.Users.Address.Suite</p>
+                    <p>@albumset.Users.Address.City</p>
+                    <p>@albumset.Users.Address.ZipCode</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#AlbumTable").DataTable();
+        });
+    </script>
+}
+
+
+
+
+
+
+

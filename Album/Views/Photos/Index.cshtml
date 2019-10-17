@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Album.Models.Photos>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Photos</h2>
+
+<table id="PhotoTable" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Title</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var photo in Model)
+        {
+            <tr>
+
+                <td><img src='@string.Format("{0}", photo.ThumbNailUrl)'> </td>
+                <td>@photo.Title</td>
+
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+
+            var table = $("#PhotoTable").DataTable();
+
+
+
+
+
+        });
+
+    </script>
+
+
+}
+
+

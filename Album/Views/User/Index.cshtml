@@ -1,0 +1,38 @@
+﻿@model Album.ViewModel.PostsAndUserDetails
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Model.UserDetails
+
+<h2>UserName:   @Model.UserDetails.UserName</h2>
+<h3>Phone: @Model.UserDetails.Phone</h3>
+<h3>Email:   @Model.UserDetails.Email</h3>
+<h5>Address: @Model.UserDetails.Address.Street</h5>
+<h5>@Model.UserDetails.Address.Suite</h5>
+<h5>@Model.UserDetails.Address.City</h5>
+<h5>@Model.UserDetails.Address.ZipCode</h5>
+
+
+
+
+<table id="PostTable" class="table table-bordered table-hover">
+
+    @foreach (var post in Model.UserPosts)
+    {
+<tbody>
+    <tr>
+        <th>
+            <p>Title: @post.Title</p>
+
+        <p style="color:grey">Post: @post.Body</p>
+
+        </th>
+
+    </tr>
+</tbody>
+
+    }
+</table>
+

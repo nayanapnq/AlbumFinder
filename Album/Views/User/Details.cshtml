@@ -1,0 +1,62 @@
+﻿@model Album.ViewModel.PostsAndUserDetails
+@{
+    ViewBag.Title = "details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome @Model.UserDetails.Name</h2>
+
+<div style="padding: 2px 16px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s; width:40%">
+    <div style="color:dimgrey">
+    <p>Username: @Model.UserDetails.UserName</p>
+    <p>Phone: @Model.UserDetails.Phone</p>
+    <p>Email:   @Model.UserDetails.Email</p>
+    <p>Address: @Model.UserDetails.Address.Street</p>
+    <p>@Model.UserDetails.Address.Suite</p>
+    <p>@Model.UserDetails.Address.City</p>
+    <p>@Model.UserDetails.Address.ZipCode</p>
+        </div>
+</div>
+  
+<h4>Posts of @Model.UserDetails.Name</h4>
+
+
+<table id="PostTable" class="table table-bordered">
+
+    @foreach (var post in Model.UserPosts)
+    { 
+        <tbody>
+            <tr>
+                <td>
+                    <p>Title: @post.Title</p>
+
+                    <p><span style="color:grey">Post: @post.Body</span></p>
+
+                </td>
+
+            </tr>
+        </tbody>
+
+    }
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+
+            var table = $("#PostTable").DataTable();
+
+
+
+
+
+            });
+
+    </script>
+
+
+}
+
